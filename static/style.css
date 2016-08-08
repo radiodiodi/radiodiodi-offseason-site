@@ -96,18 +96,15 @@ section.lightblue {
 }
 
 .navigation-main ul li {
-    border: 1px solid rgba(250, 250, 250, 1);
-    width: 5vw;
-    border-radius: 20px;
-    text-decoration: none;
-    
-    padding: 15px 20px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
 .navigation-main ul li a {
+    padding: 15px 20px;
     text-decoration: none;
     display: inline-block;
     width: 100px;
+    border-radius: 20px;
+    border: 1px solid rgba(250, 250, 250, 1);
 }
