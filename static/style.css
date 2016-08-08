@@ -19,15 +19,16 @@ $color5: rgb(214, 73, 51);
 body {
     margin: 0;
     color: #3d3d3d;
-    background-color: #eee5e9;
+    background-color:rgba(250, 250, 250, 1);
     font-family: "Asap", Geneva, Tahoma, sans-serif;
 }
 
 header {
     background-image: url("banner_transparent.png");
-    background-size: 100% auto;
+    background-size: auto 100%;
     background-repeat: no-repeat;
-    height: 50vw;
+    background-position: center;
+    height: 30vw;
 }
 
 nav li {
@@ -36,6 +37,10 @@ nav li {
 
 a {
     color: #fff;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .section-main {
@@ -84,11 +89,7 @@ h5 {
 
 section.lightblue {
   color: #fff;
-  background-color: #4D7EA8;
-}
-
-section.white {
-  background-color: #eee5e9;
+  background-color: rgba(51, 102, 153, 1);
 }
 
 .navigation-main {
