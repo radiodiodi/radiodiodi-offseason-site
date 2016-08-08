@@ -92,7 +92,25 @@ section.white {
 }
 
 .navigation-main {
+  text-align: center;
   padding: 25px 0;
   background-color: rgba(51, 102, 153, 1);
   color: #fff;
+}
+
+.navigation-main ul li {
+    border: 1px solid rgba(250, 250, 250, 1);
+    width: 5vw;
+    border-radius: 20px;
+    text-decoration: none;
+    
+    padding: 15px 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.navigation-main ul li a {
+    text-decoration: none;
+    display: inline-block;
+    width: 100px;
 }
