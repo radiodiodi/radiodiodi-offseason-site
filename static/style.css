@@ -6,17 +6,28 @@ $color4: rgb(124, 124, 124);
 $color5: rgb(214, 73, 51);
 */
 
+/*
+--dark-blue: rgba(51, 102, 153, 1);
+--light-blue: rgba(146, 220, 229, 1);
+--platinum: rgba(238, 229, 233, 1);
+--white: rgba(250, 250, 250, 1);
+--gray: rgba(124, 124, 124, 1);
+--opaque-gray: rgba(124, 124, 124, 0.2);
+--red: rgba(214, 73, 51, 1);
+*/
+
 body {
     margin: 0;
     color: #3d3d3d;
     background-color: #eee5e9;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Asap", Geneva, Tahoma, sans-serif;
 }
 
 header {
-    padding: 40px;
-    background-color: rgb(51, 102, 153);
-    height: 50vh;
+    background-image: url("vesinokkis_v3.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 50vw;
 }
 
 nav li {
@@ -24,7 +35,7 @@ nav li {
 }
 
 a {
-    color: #d64933;
+    color: #fff;
 }
 
 .section-main {
@@ -78,4 +89,10 @@ section.lightblue {
 
 section.white {
   background-color: #eee5e9;
+}
+
+.navigation-main {
+  padding: 25px 0;
+  background-color: rgba(51, 102, 153, 1);
+  color: #fff;
 }
