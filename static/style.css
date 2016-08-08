@@ -31,16 +31,12 @@ header {
     height: 30vw;
 }
 
-nav li {
-    display: inline;
+a {
+    color: rgba(250, 250, 250, 1);
 }
 
-a {
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid white;
-    padding: 10px;
-    border-radius: 20px;
+nav li {
+    display: inline;
 }
 
 .section-main {
