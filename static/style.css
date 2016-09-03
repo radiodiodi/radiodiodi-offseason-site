@@ -130,4 +130,7 @@ section.lightblue {
     nav ul {
         margin: 0;
     }
+    .navigation-main ul li a {
+        width: 150px;
+    }
 }
