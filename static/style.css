@@ -43,6 +43,15 @@ nav li {
     display: inline;
 }
 
+figure {
+    margin: 5px;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+}
+
 .section-main {
     margin: 0 auto;
     padding: 20px;
