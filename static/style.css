@@ -35,6 +35,10 @@ a {
     color: rgba(250, 250, 250, 1);
 }
 
+ul {
+    padding: 0;
+}
+
 nav li {
     display: inline;
 }
@@ -107,4 +111,23 @@ section.lightblue {
     width: 100px;
     border-radius: 20px;
     border: 1px solid rgba(250, 250, 250, 1);
+}
+
+@media (max-width: 600px) {
+    .navigation-main ul li a {
+        padding: 10px;
+    }
+    .navigation-main {
+        padding: 5px 0;
+    }
+}
+
+@media (max-width: 450px) {
+    nav li {
+        display: block;
+        margin: 10px 0;
+    }
+    nav ul {
+        margin: 0;
+    }
 }
