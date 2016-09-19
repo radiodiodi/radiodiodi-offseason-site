@@ -95,6 +95,12 @@ footer {
   background-color: #7c7c7c;
 }
 
+.partner-logo {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
 h5 {
   margin: 10px 0;
 }
