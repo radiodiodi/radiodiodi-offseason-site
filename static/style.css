@@ -80,6 +80,10 @@ figcaption {
     border-radius: 50%;
 }
 
+.map {
+    max-width: 100%;
+}
+
 .dude {
   margin: 20px 0;
 }
