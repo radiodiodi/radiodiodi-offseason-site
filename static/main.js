@@ -1,3 +1,18 @@
+(function() {
+    var accordionElements = document.getElementsByClassName("accordion");
+
+    for (var i = 0; i < accordionElements.length; i++) {
+        accordionElements[i].onclick = function(){
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("show");
+        }
+    }
+})();
+
+/**
+ * https://gist.github.com/juusaw/c52f4addcdb4b2875d14fc9525197cd5
+ */
+
 var links = document.getElementsByClassName('scroll-link');
 
 for (var i = 0; i < links.length; i++) {
