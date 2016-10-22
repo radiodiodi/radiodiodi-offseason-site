@@ -101,6 +101,13 @@ footer {
     margin-bottom: 10px;
 }
 
+#tter-logo {
+    margin-top: 10px;
+    max-height: 200px;
+    width: auto;
+}
+
+
 h5 {
   margin: 10px 0;
 }
