@@ -180,6 +180,25 @@ section.lightblue {
     max-height: 500px;
 }
 
+.dude-description {
+    display: block;
+    line-height: 1.5;
+    font-size: small;
+    margin-top: 5px;
+}
+
+.dude-name {
+    line-height: 1.5;
+    margin: 0;
+    font-size: medium;
+}
+
+.dude-contact {
+    line-height: 1.5;
+    display: block;
+    font-size: small;
+}
+
 @media (max-width: 600px) {
     .navigation-main ul li a {
         padding: 10px;
