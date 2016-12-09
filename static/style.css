@@ -107,15 +107,17 @@ footer {
     width: auto;
 }
 
-
 h5 {
   margin: 10px 0;
 }
 
 section.lightblue {
-  color: #fff;
-  background-color: rgba(51, 102, 153, 1);
+    color: #fff;
+    background-color: rgba(51, 102, 153, 1);
 }
+
+a.black {
+    color: #3d3d3d;
 
 .navigation-main {
   text-align: center;
