@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule ^mediakorti$ mainostajille.html
+RewriteRule ^mediakortti$ mainostajille.html
