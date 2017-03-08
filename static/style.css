@@ -132,6 +132,7 @@ a.black {
     margin-right: 5px;
 }
 
+.button,
 .navigation-main ul li a {
     padding: 15px 20px;
     text-decoration: none;
@@ -139,6 +140,16 @@ a.black {
     width: 100px;
     border-radius: 20px;
     border: 1px solid rgba(250, 250, 250, 1);
+}
+
+.button.button-large {
+    padding: 30px 0;
+    margin: 20px 0;
+    width: 100%;
+    font-size: 1.4em;
+    text-align: center;
+    color: rgba(51, 102, 153, 1);
+    background: white;
 }
 
 .accordion {
