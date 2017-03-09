@@ -1,0 +1,14 @@
+{
+  "name": "radiodiodi-offseason-site",
+  "version": "1.0.0",
+  "description": "Radiodiodi Offseason Site",
+  "author": "Radio Diodi <radiodiodi@radiodiodi.fi>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "path": "^0.12.7"
+  }
+}

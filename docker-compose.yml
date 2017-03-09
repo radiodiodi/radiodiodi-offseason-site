@@ -1,0 +1,14 @@
+version: '2'
+services:
+    site:
+        container_name: site_container
+        build: .
+        image: node
+        expose: 
+            - 8088
+        ports:
+            - "8088:8088"
+        volumes:
+            - .:/code
+            - /code/node_modules
+        command: node /code/server.js
