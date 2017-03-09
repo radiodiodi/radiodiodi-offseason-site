@@ -148,8 +148,19 @@ a.black {
     width: 100%;
     font-size: 1.4em;
     text-align: center;
-    color: rgba(51, 102, 153, 1);
-    background: white;
+    color: white;
+    background: #FF5300;
+    box-shadow: 2px 2px 4px #999;
+    border: none;
+}
+
+.button.button-large:hover {
+    background: #FF6D1A;
+}
+
+.button.button-large:active {
+    margin: 22px 2px;
+    box-shadow: none;
 }
 
 .accordion {
