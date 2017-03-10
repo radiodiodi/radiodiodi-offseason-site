@@ -32,6 +32,10 @@ app.get('/api/programmes', function (req, res) {
     }]);
 });
 
+app.get('/mediakortti', function(req, res) {
+    res.redirect('/mainostajille.html');
+});
+
 // Static directories
 app.use('/static', express.static('static'));
 app.use(express.static('templates'));
