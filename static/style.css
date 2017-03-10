@@ -99,11 +99,22 @@ footer {
     width: 80%;
     max-width: 300px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #tter-logo {
-    margin-top: 10px;
     max-height: 200px;
+    width: auto;
+}
+
+#abb-logo {
+    max-height: 80px;
+    width: auto;
+}
+
+#srv-logo {
+    margin-top: 0px;
+    max-height: 70px;
     width: auto;
 }
 
