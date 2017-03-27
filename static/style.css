@@ -112,6 +112,11 @@ footer {
     width: auto;
 }
 
+#apy-logo {
+    max-height: 80px;
+    width: auto;
+}
+
 #srv-logo {
     margin-top: 0px;
     max-height: 70px;
