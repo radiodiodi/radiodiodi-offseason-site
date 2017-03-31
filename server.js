@@ -32,7 +32,15 @@ app.get('/api/programmes', function (req, res) {
 });
 
 app.get('/mediakortti', function(req, res) {
-    res.redirect('/mainostajille.html');
+    res.render('mediakortti');
+});
+
+app.get('/en/advertisers', function(req, res) {
+    res.render('en_mediakortti');
+});
+
+app.get('/en/', function(req, res) {
+    res.render('en_index');
 });
 
 app.get('/', (req, res) => {
@@ -51,7 +59,6 @@ app.get('/', (req, res) => {
 
 // Static directories
 app.use('/static', express.static('static'));
-app.use(express.static('templates'));
 
 // Listen on port 8088
 app.listen(PORT, "0.0.0.0");

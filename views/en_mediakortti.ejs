@@ -10,8 +10,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="../static/autogrid.css">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="/static/autogrid.css">
+    <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
 </head>
 <body>
@@ -24,8 +24,8 @@
     </div>
     <nav class="navigation-main">
         <ul>
-            <li><a href="index.html">Front page</a></li>
-            <li><a class="scroll-link" href="#meadi">Media</a></li>
+            <li><a href="/en">Front page</a></li>
+            <li><a class="scroll-link" href="#media">Media</a></li>
             <li><a class="scroll-link" href="#support">Ad bundles</a></li>
             <li><a class="scroll-link" href="#ads">Example ads</a></li>
             <li><a class="scroll-link" href="#team">Contact Information</a></li>
@@ -89,24 +89,24 @@
                         <div class="auto-col-6">
                             <h4>SRV</h4>
                             <audio controls> 
-                                <source src="../static/audio/srv.mp3" type="audio/mpeg">
+                                <source src="/static/audio/srv.mp3" type="audio/mpeg">
                                 Unfortunately your browser does not support this audio element.
                             </audio>
                             <h4>ABB</h4>
                             <audio controls> 
-                                <source src="../static/audio/abb.wav" type="audio/mpeg">
+                                <source src="/static/audio/abb.wav" type="audio/mpeg">
                                 Unfortunately your browser does not support this audio element.
                             </audio>
                         </div>
                         <div class="auto-col-6">
                             <h4>Olvi</h4>
                             <audio controls> 
-                                <source src="../static/audio/olvi.mp3" type="audio/mpeg">
+                                <source src="/static/audio/olvi.mp3" type="audio/mpeg">
                                 Unfortunately your browser does not support this audio element.
                             </audio>
                             <h4>TEK</h4>
                             <audio controls> 
-                                <source src="../static/audio/tek.mp3" type="audio/mpeg">
+                                <source src="/static/audio/tek.mp3" type="audio/mpeg">
                                 Unfortunately your browser does not support this audio element.
                             </audio>
                         </div>
@@ -121,7 +121,7 @@
         <p>Contact informaiton for business inquiries below. All quesitons can be also headed to <a class="black" href="mailto:corporate@radiodiodi.fi">corporate@radiodiodi.fi</a></p>
         <div class="dude auto-col-4">
             <div class="image-border">
-                <img src="../static/Panu.jpg" alt="" class="dude-image" width=150px>
+                <img src="/static/Panu.jpg" alt="" class="dude-image" width=150px>
             </div>
             <span class="dude-description">CEO</span>
             <h5 class="dude-name">Panu Oksiala</h5>
@@ -129,7 +129,7 @@
         </div>
         <div class="dude auto-col-4">
             <div class="image-border">
-                <img src="../static/Onni.jpg" alt="" class="dude-image" width=150px>
+                <img src="/static/Onni.jpg" alt="" class="dude-image" width=150px>
             </div>
             <span class="dude-description">Editor in Chief</span>
             <h5 class="dude-name">Onni Lampi</h5>
@@ -137,7 +137,7 @@
         </div>
         <div class="dude auto-col-4">
             <div class="image-border">
-                <img src="../static/A-J.jpg" alt="" class="dude-image" width=150px>
+                <img src="/static/A-J.jpg" alt="" class="dude-image" width=150px>
             </div>
             <span class="dude-description">Chief of Studio</span>
             <h5 class="dude-name">Antti-Juho Nieminen</h5>
@@ -145,49 +145,10 @@
         </div>
 
     </div>
-    </div>
     </section>
-
-    <div class="footer-container">
-        <footer class="wrapper">
-            <h3>Radiodiodi</h3>
-            <p>The most awesome student radio in Finland.</p>
-            <p>With us:</p>
-            <div class="partner-logo-container">
-                <a href="https://www.abb.com/"><img class="partner-logo" id="abb-logo" src="../static/abb_logo.png" alt="ABB logo"></a>
-            </div>
-            <div class="partner-logo-container">
-                <a href="https://www.vincit.fi/"><img class="partner-logo" id="vincit-logo" src="../static/vincit_logo.png" alt="Vincit logo"></a>
-            </div>
-            <div class="partner-logo-container">
-                <a href="https://www.srv.fi/"><img class="partner-logo" id="srv-logo" src="../static/srv_logo.png" alt="SRV logo"></a>
-            </div>
-            <div class="partner-logo-container">
-                <a href="https://gofore.com/"><img class="partner-logo" id="gofore-logo" src="../static/gofore_logo.png" alt="Gofore logo"></a>
-            </div>
-            <div class="partner-logo-container">
-                <a href="http://www.genelec.fi/"><img class="partner-logo" src="../static/Genelec_logo-w-slogan_RGB_white.png" alt="Genelec logo"></a>
-            </div>
-            <div class="partner-logo-container">
-                <a href="https://www.apy.fi/"><img class="partner-logo" id="apy-logo" src="../static/apy_logo.png" alt="Äpy logo"></a>
-            </div>
-            <div class="partner-logo-container">
-                <a href="http://tter.ayy.fi/"><img class="partner-logo" id="tter-logo" src="../static/TTER_logo_RGB_transparent.png" alt="TTER logo"></a>
-            </div>
-            <p class="dude-contact">board@radiodiodi.fi</p>
-            <p>&copy; 2016</p>
-        </footer>
     </div>
 
-    <script src="../static/main.js"></script>
-    <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-83690211-1', 'auto');
-ga('send', 'pageview');
-    </script>
+    <%- include footer.ejs %>
 
 </body>
 </html>
