@@ -7,6 +7,7 @@ const fs = require('fs')
 
 // Constants
 const PORT = 8088;
+const HOST = 'http://localhost:' + PORT;
 
 // App
 const app = express();
@@ -33,7 +34,7 @@ app.get('/mediakortti', function(req, res) {
 });
 
 app.get('/', (req, res) => {
-    rp({ uri: 'https://radiodiodi.fi/api/programmes', json: true })
+    rp({ uri: HOST + '/api/programmes', json: true })
       .then(r => res.render('index', {programmes: r}))
 })
 
