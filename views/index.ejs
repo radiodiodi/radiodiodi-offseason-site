@@ -93,7 +93,7 @@
                     </ul></p>
                 </div>
                 <div class="programme-chart auto-content section-main">
-                    <div class="programme-today">
+                    <div class="programme-today auto-col-6">
                         <h3>Tänään</h3>
                         <% programmes.all[programmes.today].forEach((show) => { %>
                         <div class="chart-show">
@@ -103,10 +103,17 @@
                         </div>
                         <% }) %>
                     </div>
-                    <div class="programme-tomorrow">
-                        <h3>Huomenna</h3>
-                        <button id="programme-prev-day"><</button>
-                        <button id="programme-next-day">></button>
+                    <div class="programme-tomorrow auto-col-6 ">
+                        <div class="auto-row">
+                            <div class="auto-col-6">
+                                <h3>Huomenna</h3>
+                                <button id="programme-prev-day"><</button>
+                                <button id="programme-next-day">></button>
+                            </div>
+                            <div class="datepicker auto-col-6">
+                                <input type="date" name="chart_date" min="2017-04-12" max="2017-04-30" value="2017-04-13">
+                            </div>
+                        </div>
                         <div id="next-day">
                             <% programmes.all[programmes.today + 1].forEach((show) => { %>
                             <div class="chart-show">

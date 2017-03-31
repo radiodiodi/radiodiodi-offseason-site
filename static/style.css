@@ -128,7 +128,7 @@ h5 {
 }
 
 section.lightblue {
-    color: #fff;
+    color: rgba(250, 250, 250, 1);
     background-color: rgba(51, 102, 153, 1);
 }
 
@@ -140,7 +140,7 @@ a.black {
   text-align: center;
   padding: 25px 0;
   background-color: rgba(51, 102, 153, 1);
-  color: #fff;
+  color: rgba(250, 250, 250, 1);
 }
 
 .navigation-main ul li {
@@ -264,10 +264,8 @@ a.black {
 
 .programme-today,
 .programme-tomorrow {
-    width: 50%;
     padding: 10px;
     box-sizing: border-box;
-    float: left;
 }
 
 .chart-show {
@@ -275,6 +273,15 @@ a.black {
     padding: 10px;
     text-align: center;
     border: 1px solid #ccc;
-    background-color: #fff;
+    background-color: rgba(250, 250, 250, 1);
     color: rgba(51, 102, 153, 1);
+}
+
+.datepicker input {
+    margin-top: 1em;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    font-size: 1.17em;
+    width: 100%;
+    background-color: rgba(250, 250, 250, 1);
 }
