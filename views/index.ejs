@@ -95,21 +95,27 @@
                 <div class="programme-chart auto-content section-main">
                     <div class="programme-today">
                         <h3>Tänään</h3>
-                        <% programmes.today.forEach((show) => { %>
+                        <% programmes.all[programmes.today].forEach((show) => { %>
                         <div class="chart-show">
                             <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
                             <p><%= show.title %></p>
+                            <p><%= show.by %></p>
                         </div>
                         <% }) %>
                     </div>
                     <div class="programme-tomorrow">
                         <h3>Huomenna</h3>
-                        <% programmes.tomorrow.forEach((show) => { %>
-                        <div class="chart-show">
-                            <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
-                            <p><%= show.title %></p>
+                        <button id="programme-prev-day"><</button>
+                        <button id="programme-next-day">></button>
+                        <div id="next-day">
+                            <% programmes.all[programmes.today + 1].forEach((show) => { %>
+                            <div class="chart-show">
+                                <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
+                                <p><%= show.title %></p>
+                                <p><%= show.by %></p>
+                            </div>
+                            <% }) %>
                         </div>
-                        <% }) %>
                     </div>
 
                 </div>
@@ -215,7 +221,12 @@
                         <p>&copy; 2017</p>
                     </footer>
                 </div>
-
+                <script>
+                  var programChart = {
+                      programme: <%- JSON.stringify(programmes.all) %>,
+                      selectedDate: <%= programmes.today + 1 %>
+                  };
+                </script>
                 <script src="static/main.js"></script>
                 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

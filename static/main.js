@@ -42,3 +42,28 @@ function animateScroll(targetHeight) {
         }
     }
 }
+
+function updateChart(back) {
+    var addHtml = '';
+    var index = back ?
+        programChart.selectedDate - 1:
+        programChart.selectedDate + 1;
+
+    if (programChart.programme[index]) {
+        programChart.selectedDate = index;
+        programChart.programme[index].forEach(function(p) {
+            addHtml += '<div class="chart-show">' +
+                            '<small>' + p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5) + '</small>' +
+                                '<p>' + p.title + '</p>' +
+                                '<p>' + p.by + '</p>' +
+                            '</div>';
+        });
+        document.getElementById('next-day').innerHTML = addHtml;
+    }
+};
+
+var chartForward = function() { updateChart(false); };
+var chartBack = function() { updateChart(true); };
+
+document.getElementById('programme-next-day').onclick = chartForward;
+document.getElementById('programme-prev-day').onclick = chartBack;
