@@ -276,3 +276,11 @@ a.black {
     background-color: #fff;
     color: rgba(51, 102, 153, 1);
 }
+
+.datepicker input {
+    margin-top: 1em;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    font-size: 1.17em;
+    width: 100%;
+}

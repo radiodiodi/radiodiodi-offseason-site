@@ -103,7 +103,14 @@
                         <% }) %>
                     </div>
                     <div class="programme-tomorrow auto-col-6 ">
-                        <h3>Huomenna</h3>
+                        <div class="auto-row">
+                            <div class="auto-col-6">
+                                <h3>Huomenna</h3>
+                            </div>
+                            <div class="datepicker auto-col-6">
+                                <input type="date" name="chart_date" min="2017-04-12" max="2017-04-30" value="2017-04-13">
+                            </div>
+                        </div>
                         <% programmes.tomorrow.forEach((show) => { %>
                         <div class="chart-show">
                             <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
