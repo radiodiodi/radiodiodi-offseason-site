@@ -55,4 +55,4 @@ app.use(express.static('templates'));
 
 // Listen on port 8088
 app.listen(PORT, "0.0.0.0");
-console.log('Running on http://localhost:' + PORT);
+console.log('Running on http://' + HOST + ':' + PORT);
