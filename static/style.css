@@ -264,10 +264,8 @@ a.black {
 
 .programme-today,
 .programme-tomorrow {
-    width: 50%;
     padding: 10px;
     box-sizing: border-box;
-    float: left;
 }
 
 .chart-show {
