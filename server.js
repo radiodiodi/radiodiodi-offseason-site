@@ -2,12 +2,16 @@
 
 const express = require('express');
 const path = require('path');
+const rp = require('request-promise');
 
 // Constants
 const PORT = 8088;
 
 // App
 const app = express();
+
+app.set('view engine', 'ejs');
+
 app.get('/api/now_playing', function (req, res) {
     res.json({
         "title":    "joylent-arvosteluilta",
@@ -23,7 +27,7 @@ app.get('/api/programmes', function (req, res) {
         "by":       "dominakääpiö",
         "start":    "00:00:00 01-01-1970",
         "end":      "01:00:00 01-01-1970"
-    }, 
+    },
     {
         "title":    "joylent-arvosteluilta 2",
         "by":       "dominakääpiö",
@@ -35,6 +39,11 @@ app.get('/api/programmes', function (req, res) {
 app.get('/mediakortti', function(req, res) {
     res.redirect('/mainostajille.html');
 });
+
+app.get('/', (req, res) => {
+    rp({ uri: 'https://radiodiodi.fi/api/programmes', json: true })
+      .then(r => res.render('index', {programmes: r}))
+})
 
 // Static directories
 app.use('/static', express.static('static'));
