@@ -3,6 +3,7 @@
 const express = require('express');
 const path = require('path');
 const rp = require('request-promise');
+const fs = require('fs')
 
 // Constants
 const PORT = 8088;
@@ -11,29 +12,20 @@ const PORT = 8088;
 const app = express();
 
 app.set('view engine', 'ejs');
+var dummy_data = {}
+fs.readFile('dummy.json', 'utf8', function (err,data) {
+    if (err) {
+        return console.log(err);
+    }
+    dummy_data = JSON.parse(data);
+});
 
 app.get('/api/now_playing', function (req, res) {
-    res.json({
-        "title":    "joylent-arvosteluilta",
-        "by":       "dominakääpiö",
-        "start":    "00:00:00 01-01-1970",
-        "end":      "01:00:00 01-01-1970"
-    });
+    res.json(dummy_data[0]);
 });
 
 app.get('/api/programmes', function (req, res) {
-    res.json([{
-        "title":    "joylent-arvosteluilta 1",
-        "by":       "dominakääpiö",
-        "start":    "00:00:00 01-01-1970",
-        "end":      "01:00:00 01-01-1970"
-    },
-    {
-        "title":    "joylent-arvosteluilta 2",
-        "by":       "dominakääpiö",
-        "start":    "01:00:00 01-01-1970",
-        "end":      "02:00:00 01-01-1970"
-    }]);
+    res.json(dummy_data);
 });
 
 app.get('/mediakortti', function(req, res) {
