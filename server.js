@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const rp = require('request-promise');
 const fs = require('fs')
+const moment = require('moment')
 
 // Constants
 const PORT = 8088;
@@ -34,9 +35,19 @@ app.get('/mediakortti', function(req, res) {
 });
 
 app.get('/', (req, res) => {
+    const today = Date.parse('2017-04-16T18:00:00.000Z');
+    const tomorrow = Date.parse('2017-04-17T18:00:00.000Z');
     rp({ uri: HOST + '/api/programmes', json: true })
-      .then(r => res.render('index', {programmes: r}))
-})
+        .then(r => {
+            r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
+            return res.render('index', {
+                programmes: {
+                today: r.filter(x => moment(today).isSame(moment(Date.parse(x.start)), 'd')),
+                tomorrow: r.filter(x => moment(tomorrow).isSame(moment(Date.parse(x.start)), 'd')),
+                all: r}
+            });
+        });
+});
 
 // Static directories
 app.use('/static', express.static('static'));

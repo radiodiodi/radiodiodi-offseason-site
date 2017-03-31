@@ -93,12 +93,25 @@
                     </ul></p>
                 </div>
                 <div class="programme-chart auto-content section-main">
-                <% programmes.forEach((show) => { %>
-                  <div class="show">
-                    <small><%= show.start %></small>
-                    <p><%= show.title %></p>
-                  </div>
-                <% }) %>
+                    <div class="programme-today">
+                        <h3>Tänään</h3>
+                        <% programmes.today.forEach((show) => { %>
+                        <div class="chart-show">
+                            <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
+                            <p><%= show.title %></p>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <div class="programme-tomorrow">
+                        <h3>Huomenna</h3>
+                        <% programmes.tomorrow.forEach((show) => { %>
+                        <div class="chart-show">
+                            <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
+                            <p><%= show.title %></p>
+                        </div>
+                        <% }) %>
+                    </div>
+
                 </div>
         </div>
             </section>
