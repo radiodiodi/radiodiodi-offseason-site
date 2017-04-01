@@ -90,31 +90,39 @@
                     <li>Vaikka yksikään yllä kuvatuista nakeista ei puhuttele, ota silti yhteyttä! Hyville tyypeille riittää aina tekemistä ja usein sitä keksii itsekin mukaan lähdettyään!</li>
                 </ul></p>
             </div>
-            <div class="programme-chart auto-content section-main">
-                <div class="programme-today auto-col-6">
-                    <h3>Tänään</h3>
-                    <% programmes.today.forEach((show) => { %>
-                    <div class="chart-show">
-                        <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
-                        <p><%= show.title %></p>
-                    </div>
-                    <% }) %>
-                </div>
-                <div class="programme-tomorrow auto-col-6 ">
-                    <div class="auto-row">
-                        <div class="auto-col-6">
-                            <h3>Huomenna</h3>
+                <div class="programme-chart auto-content section-main">
+                    <div class="programme-today auto-col-6">
+                        <h3>Tänään</h3>
+                        <% programmes.all[programmes.today].forEach((show) => { %>
+                        <div class="chart-show">
+                            <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
+                            <p><%= show.title %></p>
+                            <p><%= show.by %></p>
                         </div>
-                        <div class="datepicker auto-col-6">
-                            <input type="date" name="chart_date" min="2017-04-12" max="2017-04-30" value="2017-04-13">
+                        <% }) %>
+                    </div>
+                    <div class="programme-tomorrow auto-col-6">
+                        <div class="auto-row">
+                            <div class="auto-col-6">
+                                <h3 style="display:inline">Huomenna</h3>
+                                <button id="programme-prev-day"><</button>
+                                <button id="programme-next-day">></button>
+                            </div>
+                            <div class="datepicker auto-col-6">
+                                <input type="date" name="chart_date" min="2017-04-12" max="2017-04-30" value="2017-04-13">
+                            </div>
+                        </div>
+                        <div id="next-day">
+                            <% programmes.all[programmes.today + 1].forEach((show) => { %>
+                            <div class="chart-show">
+                                <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
+                                <p><%= show.title %></p>
+                                <p><%= show.by %></p>
+                            </div>
+                            <% }) %>
                         </div>
                     </div>
-                    <% programmes.tomorrow.forEach((show) => { %>
-                    <div class="chart-show">
-                        <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
-                        <p><%= show.title %></p>
-                    </div>
-                    <% }) %>
+
                 </div>
 
             </div>
@@ -190,7 +198,12 @@
             </div>
         </section>
     </div>
-
+    <script>
+        var programChart = {
+            programme: <%- JSON.stringify(programmes.all) %>,
+            selectedDate: <%= programmes.today + 1 %>
+        };
+    </script>
     <%- include footer.ejs %>
 
 </body>
