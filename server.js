@@ -15,17 +15,15 @@ const HOST = "0.0.0.0";
 const ROOT_PATH = "http://" + HOST + ":" + PORT;
 const CALENDAR_ID = "radiodiodi.fi_9hnpbn3u6ov84uv003kaghg4rc@group.calendar.google.com"
 
+// Calendar constants
+const START_DATE = new Date(Date.parse("2017-04-12T00:00:00.000+03:00"));
+const END_DATE = new Date(Date.parse("2017-05-01T00:00:00.000+03:00"));
+
 // App
 const app = express();
 
 app.set('view engine', 'ejs');
-var dummy_data = {}
-fs.readFile('dummy.json', 'utf8', function (err,data) {
-    if (err) {
-        return console.log(err);
-    }
-    dummy_data = JSON.parse(data);
-});
+var calendar_data = [];
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/radiodiodi-calendar-credentials.json
@@ -129,8 +127,8 @@ function listEvents(auth) {
     calendar.events.list({
         auth: auth,
         calendarId: CALENDAR_ID,
-        timeMin: (new Date()).toISOString(),
-        maxResults: 10,
+        timeMin: START_DATE.toISOString(),
+        timeMax: END_DATE.toISOString(),
         singleEvents: true,
         orderBy: 'startTime'
     }, function(err, response) {
@@ -142,11 +140,17 @@ function listEvents(auth) {
         if (events.length == 0) {
             console.log('No upcoming events found.');
         } else {
-            console.log('Upcoming 10 events:');
+            console.log('Received ' + events.length + ' events.');
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
+                var title = event.summary;
+                var by = event.description || "";
                 var start = event.start.dateTime || event.start.date;
-                console.log('%s - %s', start, event.summary);
+                var end = event.end.dateTime || event.end.date;
+                var result = {'title': title, 'by': by,
+                    'start': start, 'end': end
+                };
+                calendar_data.push(result);
             }
         }
     });
@@ -154,11 +158,11 @@ function listEvents(auth) {
 
 
 app.get('/api/now_playing', function (req, res) {
-    res.json(dummy_data[0]);
+    res.json(calendar_data[0]);
 });
 
 app.get('/api/programmes', function (req, res) {
-    res.json(dummy_data);
+    res.json(calendar_data);
 });
 
 app.get('/mediakortti', function(req, res) {
@@ -178,10 +182,12 @@ app.get('/', (req, res) => {
     rp({ uri: ROOT_PATH + '/api/programmes', json: true })
         .then(r => {
             r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
+            var grouped = _.groupBy(r, (x) => x.start.substr(8, 2));
+            console.log(grouped);
             return res.render('index', {
                 programmes: {
-                    today: 15,
-                    all: _.groupBy(r, (x) => x.start.substr(8, 2))
+                    today: 18,
+                    all: grouped
                 }
             });
         });

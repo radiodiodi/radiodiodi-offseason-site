@@ -93,7 +93,7 @@
                 <div class="programme-chart auto-content section-main">
                     <div class="programme-today auto-col-6">
                         <h3>Tänään</h3>
-                        <% programmes.all[programmes.today].forEach((show) => { %>
+                        <% (programmes.all['' + programmes.today] || []).forEach((show) => { %>
                         <div class="chart-show">
                             <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
                             <p><%= show.title %></p>
@@ -113,7 +113,7 @@
                             </div>
                         </div>
                         <div id="next-day">
-                            <% programmes.all[programmes.today + 1].forEach((show) => { %>
+                            <% (programmes.all['' + programmes.today + 1] || []).forEach((show) => { %>
                             <div class="chart-show">
                                 <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
                                 <p><%= show.title %></p>
