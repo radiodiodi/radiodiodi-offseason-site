@@ -18,6 +18,7 @@ const CALENDAR_ID = "radiodiodi.fi_9hnpbn3u6ov84uv003kaghg4rc@group.calendar.goo
 // Calendar constants
 const START_DATE = new Date(Date.parse("2017-04-12T00:00:00.000+03:00"));
 const END_DATE = new Date(Date.parse("2017-05-01T00:00:00.000+03:00"));
+const API_INTERVAL = 1000 * 60 * 60; // 1 hour
 
 // App
 const app = express();
@@ -40,7 +41,13 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     }
     // Authorize a client with the loaded credentials, then call the
     // Google Calendar API.
-    authorize(JSON.parse(content), listEvents);
+    function listEventsInterval() {
+        authorize(JSON.parse(content), listEvents);
+    }
+
+    listEventsInterval();
+    setInterval(listEventsInterval, API_INTERVAL);
+        
 });
 
 /**
@@ -182,7 +189,6 @@ app.get('/', (req, res) => {
         .then(r => {
             r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
             var grouped = _.groupBy(r, (x) => x.start.substr(8, 2));
-            console.log(grouped);
             return res.render('index', {
                 programmes: {
                     today: 18,
