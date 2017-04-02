@@ -58,6 +58,7 @@ function updateChart(back) {
                                 '<p>' + p.by + '</p>' +
                             '</div>';
         });
+        document.getElementById('date-title').innerHTML = '' + programChart.selectedDate + '.4.2017';
         document.getElementById('next-day').innerHTML = addHtml;
     }
 };

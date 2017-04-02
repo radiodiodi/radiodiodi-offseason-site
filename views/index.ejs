@@ -91,6 +91,7 @@
                 </ul></p>
             </div>
                 <div class="programme-chart auto-content section-main">
+                    <!--
                     <div class="programme-today auto-col-6">
                         <h3>Tänään</h3>
                         <% (programmes.all['' + programmes.today] || []).forEach((show) => { %>
@@ -101,19 +102,16 @@
                         </div>
                         <% }) %>
                     </div>
-                    <div class="programme-tomorrow auto-col-6">
-                        <div class="auto-row">
-                            <div class="auto-col-6">
-                                <h3 style="display:inline">Huomenna</h3>
-                                <button id="programme-prev-day"><</button>
-                                <button id="programme-next-day">></button>
-                            </div>
-                            <div class="datepicker auto-col-6">
-                                <input type="date" name="chart_date" min="2017-04-12" max="2017-04-30" value="2017-04-13">
-                            </div>
+                    -->
+                    <h2 class="section-title">Ohjelmakartta</h2>
+                    <div class="programme-tomorrow auto-col-12" style="padding-bottom: 0">
+                        <div id="chart-selector">
+                            <h3 id="date-title">18.4.2017</h3>
+                            <button id="programme-prev-day"><</button>
+                            <button id="programme-next-day">></button>
                         </div>
                         <div id="next-day">
-                            <% (programmes.all['' + programmes.today + 1] || []).forEach((show) => { %>
+                            <% (programmes.all['' + programmes.today] || []).forEach((show) => { %>
                             <div class="chart-show">
                                 <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
                                 <p><%= show.title %></p>
@@ -201,7 +199,7 @@
     <script>
         var programChart = {
             programme: <%- JSON.stringify(programmes.all) %>,
-            selectedDate: <%= programmes.today + 1 %>
+            selectedDate: <%= programmes.today %>
         };
     </script>
     <%- include footer.ejs %>

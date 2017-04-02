@@ -178,7 +178,6 @@ app.get('/en/', function(req, res) {
 });
 
 app.get('/', (req, res) => {
-    const today = 15;
     rp({ uri: ROOT_PATH + '/api/programmes', json: true })
         .then(r => {
             r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
