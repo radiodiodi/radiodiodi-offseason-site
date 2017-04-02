@@ -28,6 +28,7 @@
     <nav class="navigation-main">
         <ul>
             <li><a class="scroll-link" href="#corporate">Yrityksille</a></li>
+            <li><a class="scroll-link" href="#programmes">Ohjelmakartta</a></li>
             <li><a class="scroll-link" href="#recruit">Tekijäksi?</a></li>
             <li><a class="scroll-link" href="#team">Tiimi</a></li>
             <li><a href="/mediakortti">Mediakortti</a></li>
@@ -56,6 +57,26 @@
             </div>
         </div>
         <section class="lightblue">
+            <div class="programme-chart auto-content section-main">
+                <h2 id="programmes" class="section-title">Ohjelmakartta</h2>
+                <div class="programme-tomorrow auto-col-12" style="padding-bottom: 0">
+                    <div id="chart-selector">
+                        <h3 id="date-title">18.4.2017</h3>
+                        <button id="programme-prev-day"><</button>
+                        <button id="programme-next-day">></button>
+                    </div>
+                    <div id="next-day">
+                        <% (programmes.all['' + programmes.today] || []).forEach((show) => { %>
+                        <div class="chart-show">
+                            <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
+                            <p><%= show.title %></p>
+                            <p><%= show.by %></p>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+
+            </div>
             <div id="recruit" class="auto-content section-main section-makers">
                 <h2 class="section-title">Tekijäksi?</h2>
                 <p>Kiinnostaako radion taustatiimiin kuuluminen? Haluatko tutustua mielenkiintoiseen tekniikkaan? Halajatko osaksi mahtavaa tekijätiimiä, jolta ei keskinäinen hauskanpito lopu?</p>
@@ -90,38 +111,6 @@
                     <li>Vaikka yksikään yllä kuvatuista nakeista ei puhuttele, ota silti yhteyttä! Hyville tyypeille riittää aina tekemistä ja usein sitä keksii itsekin mukaan lähdettyään!</li>
                 </ul></p>
             </div>
-                <div class="programme-chart auto-content section-main">
-                    <!--
-                    <div class="programme-today auto-col-6">
-                        <h3>Tänään</h3>
-                        <% (programmes.all['' + programmes.today] || []).forEach((show) => { %>
-                        <div class="chart-show">
-                            <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
-                            <p><%= show.title %></p>
-                            <p><%= show.by %></p>
-                        </div>
-                        <% }) %>
-                    </div>
-                    -->
-                    <h2 class="section-title">Ohjelmakartta</h2>
-                    <div class="programme-tomorrow auto-col-12" style="padding-bottom: 0">
-                        <div id="chart-selector">
-                            <h3 id="date-title">18.4.2017</h3>
-                            <button id="programme-prev-day"><</button>
-                            <button id="programme-next-day">></button>
-                        </div>
-                        <div id="next-day">
-                            <% (programmes.all['' + programmes.today] || []).forEach((show) => { %>
-                            <div class="chart-show">
-                                <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
-                                <p><%= show.title %></p>
-                                <p><%= show.by %></p>
-                            </div>
-                            <% }) %>
-                        </div>
-                    </div>
-
-                </div>
 
             </div>
     </div>
