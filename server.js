@@ -192,6 +192,7 @@ app.get('/', (req, res) => {
             return res.render('index', {
                 programmes: {
                     today: 18,
+                    weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
                     all: grouped
                 }
             });
