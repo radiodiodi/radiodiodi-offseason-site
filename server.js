@@ -148,6 +148,7 @@ function listEvents(auth) {
             console.log('No upcoming events found.');
         } else {
             console.log('Received ' + events.length + ' events.');
+            var new_calendar = [];
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
                 var title = event.summary;
@@ -157,8 +158,9 @@ function listEvents(auth) {
                 var result = {'title': title, 'by': by,
                     'start': start, 'end': end
                 };
-                calendar_data.push(result);
+                new_calendar.push(result);
             }
+            calendar_data = new_calendar;
         }
     });
 }
