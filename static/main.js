@@ -58,7 +58,7 @@ function updateChart(back) {
                                 '<p>' + p.by + '</p>' +
                             '</div>';
         });
-        document.getElementById('date-title').innerHTML = '' + programChart.selectedDate + '.4.2017';
+        document.getElementById('date-title').innerHTML = programChart.weekdays[(programChart.selectedDate - 3) % 7] + ' ' + programChart.selectedDate + '.4.2017';
         document.getElementById('next-day').innerHTML = addHtml;
     }
 };

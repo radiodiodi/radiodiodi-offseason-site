@@ -61,7 +61,7 @@
                 <h2 id="programmes" class="section-title">Ohjelmakartta</h2>
                 <div class="programme-tomorrow auto-col-12" style="padding-bottom: 0">
                     <div id="chart-selector">
-                        <h3 id="date-title">18.4.2017</h3>
+                        <h3 id="date-title"><%= programmes.weekdays[(programmes.today - 3) % 7] %> <%= programmes.today %>.4.2017</h3>
                         <button id="programme-prev-day"><</button>
                         <button id="programme-next-day">></button>
                     </div>
@@ -191,7 +191,8 @@
     <script>
         var programChart = {
             programme: <%- JSON.stringify(programmes.all) %>,
-            selectedDate: <%= programmes.today %>
+            selectedDate: <%= programmes.today %>,
+            weekdays: <%- JSON.stringify(programmes.weekdays) %>
         };
     </script>
     <%- include footer.ejs %>
