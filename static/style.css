@@ -301,10 +301,17 @@ a.black {
 
 @media (max-width: 600px) {
     .calendar-frame {
+        display: none;
+    }
+
+    .mobile-only-calendar {
+        display: inherit;
+        padding: 40px;
         text-align: center;
-        margin-left: 0px;
-        margin-right: 0px;
-        width: 100%;
+    }
+
+    .mobile-only-calendar a {
+        color: #3d3d3d;
     }
 }
 
@@ -313,5 +320,9 @@ a.black {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .mobile-only-calendar {
+        display: none;
     }
 }
