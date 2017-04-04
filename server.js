@@ -205,6 +205,10 @@ app.get('/shoutbox', function(req, res) {
     res.render('shoutbox');
 });
 
+app.get('/calendar', function(req, res) {
+    res.render('calendar');
+});
+
 // Static directories
 app.use('/static', express.static('static'));
 
