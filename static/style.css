@@ -247,6 +247,12 @@ a.black {
     .navigation-main {
         padding: 5px 0;
     }
+
+    .library-main {
+        margin: 0;
+        font-size: 12px;
+        width: 100%;
+    }
 }
 
 @media (max-width: 450px) {
