@@ -236,17 +236,17 @@ app.get('/library', function(req, res) {
         var queryTitle = req.query.title == 'on';
         var queryArtist = req.query.artist == 'on';
         var queryAlbum = req.query.album == 'on';
-        var querySearch = req.query.search.toLowerCase().trim();
+        var querySearch = req.query.search.toLowerCase().trim().replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
 
         var filtered = [];
         _.forEach(musicLibrary, function (o) {
-            if (queryTitle && _.includes(o['title'].toLowerCase(), querySearch)) {
+            if (queryTitle && _.includes(o['title'].toLowerCase().replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ''), querySearch)) {
                 filtered.push(o);
             }
-            if (queryArtist && _.includes(o['artist'].toLowerCase(), querySearch)) {
+            if (queryArtist && _.includes(o['artist'].toLowerCase().replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ''), querySearch)) {
                 filtered.push(o);
             }
-            if (queryAlbum && _.includes(o['album'].toLowerCase(), querySearch)) {
+            if (queryAlbum && _.includes(o['album'].toLowerCase().replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ''), querySearch)) {
                 filtered.push(o);
             }
         });
