@@ -32,13 +32,13 @@
             <h2>Musiikkikirjasto</h2>
             <form action="/library#search">
                 <div>
-                    <input type="search" name="search" class="library-search-input">
+                    <input id="searchBar" type="search" name="search" class="library-search-input">
                     <button type="submit" class="library-search-input">Hae!</button>
                 </div>
                 <div class="checkbox-panel">
-                    <input type="checkbox" name="title" checked>Kappale</input>
-                    <input type="checkbox" name="artist" checked>Artisti</input>
-                    <input type="checkbox" name="album" checked>Albumi</input>
+                    <input id="titleCheckbox" type="checkbox" name="title" checked>Kappale</input>
+                    <input id="artistCheckbox" type="checkbox" name="artist" checked>Artisti</input>
+                    <input id="albumCheckbox" type="checkbox" name="album" checked>Albumi</input>
                 </div>
             </form>
         </div>
@@ -63,6 +63,32 @@
             </table>
         </div>
     </div>
+
+    <script>
+
+        function getParameterByName(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var searchParam = getParameterByName('search', null);
+        var titleParam = getParameterByName('title', null);
+        var artistParam = getParameterByName('artist', null);
+        var albumParam = getParameterByName('album', null);
+        if (searchParam) {
+           document.getElementById('searchBar').value = searchParam;
+           document.getElementById('titleCheckbox').checked = titleParam != null;
+           document.getElementById('artistCheckbox').checked = artistParam != null;
+           document.getElementById('albumCheckbox').checked = albumParam != null;
+        }
+    </script>
 
     <%- include footer.ejs %>
 

@@ -66,5 +66,7 @@ function updateChart(back) {
 var chartForward = function() { updateChart(false); };
 var chartBack = function() { updateChart(true); };
 
-document.getElementById('programme-next-day').onclick = chartForward;
-document.getElementById('programme-prev-day').onclick = chartBack;
+try {
+    document.getElementById('programme-next-day').onclick = chartForward;
+    document.getElementById('programme-prev-day').onclick = chartBack;
+} catch (err) {}
