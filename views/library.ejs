@@ -31,30 +31,33 @@
         <div id="search" class="library-search auto-content section-main section-overview">
             <h2>Musiikkikirjasto</h2>
             <form action="/library#search">
-                <input type="search" name="search" class="library-search-input">
-                <select name="type" class="library-search-input">
-                    <option value="title">Kappale</option>
-                    <option value="artist">Artisti</option>
-                    <option value="album">Albumi</option>
-                </select>
-                <button type="submit" class="library-search-input">Hae!</button>
+                <div>
+                    <input type="search" name="search" class="library-search-input">
+                    <button type="submit" class="library-search-input">Hae!</button>
+                </div>
+                <div class="checkbox-panel">
+                    <input type="checkbox" name="title" checked>Kappale</input>
+                    <input type="checkbox" name="artist" checked>Artisti</input>
+                    <input type="checkbox" name="album" checked>Albumi</input>
+                </div>
+            </form>
         </div>
         <div class="auto-content section-main">
             <table class="library-table auto-row">
                 <% if (data.length > 0) { %>
                     <h3><%= data.length %> hakutulos(ta).</h3>
                     <tr class="library-tr">
-                        <th class="library-th auto-col-4">Kappale</th>
-                        <th class="library-th auto-col-4">Artisti</th>
-                        <th class="library-th auto-col-4">Albumi</th>
+                        <th class="library-th">Kappale</th>
+                        <th class="library-th">Artisti</th>
+                        <th class="library-th">Albumi</th>
                     </tr>
                 <% } %>
 
                 <% data.forEach((item) => { %>
-                <tr>
-                    <td class="library-td auto-col-4"><%= item.title %></td>
-                    <td class="library-td auto-col-4"><%= item.artist %></td>
-                    <td class="library-td auto-col-4"><%= item.album %></td>
+                <tr class="library-tr">
+                    <td class="library-td"><%= item.title %></td>
+                    <td class="library-td"><%= item.artist %></td>
+                    <td class="library-td"><%= item.album %></td>
                 </tr>
                 <% }) %>
             </table>

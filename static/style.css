@@ -339,11 +339,13 @@ a.black {
     text-align: left;
     padding: 15px;
     background-color: #dfdfdf;
+    width: 33%;
 }
 
 .library-td {
     text-align: left;
-    padding: 15px;
+    width: 33%;
+    padding: 1em;
 }
 
 .library-tr {
@@ -363,5 +365,9 @@ th, td {
     border-radius: 3px;
     border: 1px solid #3d3d3d;
     height: 3em;
+    margin-top: 5px;
 }
 
+.checkbox-panel {
+    margin: 5px;
+}

@@ -232,13 +232,21 @@ app.get('/calendar', function(req, res) {
 });
 
 app.get('/library', function(req, res) {
-    if (req.query.search && req.query.type) {
-        var queryType = req.query.type.toLowerCase().trim();
+    if (req.query.search) {
+        var queryTitle = req.query.title == 'on';
+        var queryArtist = req.query.artist == 'on';
+        var queryAlbum = req.query.album == 'on';
         var querySearch = req.query.search.toLowerCase().trim();
 
         var filtered = [];
         _.forEach(musicLibrary, function (o) {
-            if (_.includes(o[queryType].toLowerCase(), querySearch)) {
+            if (queryTitle && _.includes(o['title'].toLowerCase(), querySearch)) {
+                filtered.push(o);
+            }
+            if (queryArtist && _.includes(o['artist'].toLowerCase(), querySearch)) {
+                filtered.push(o);
+            }
+            if (queryAlbum && _.includes(o['album'].toLowerCase(), querySearch)) {
                 filtered.push(o);
             }
         });
