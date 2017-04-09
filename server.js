@@ -61,7 +61,7 @@ function readLibraryPeriodic() {
         }
 
         try {
-            musicLibrary = JSON.parse(content);
+            musicLibrary = JSON.parse(String(content).toLowerCase());
             console.log("Read library: " + musicLibrary.length + " items.");
         } catch (err) {
             console.log(err);
@@ -233,8 +233,8 @@ app.get('/calendar', function(req, res) {
 
 app.get('/library', function(req, res) {
     if (req.query.search && req.query.type) {
-        var queryType = req.query.type;
-        var querySearch = req.query.search;
+        var queryType = req.query.type.toLowerCase().trim();
+        var querySearch = req.query.search.toLowerCase().trim();
         var filtered = _.filter(musicLibrary, function (o) {
                 return _.includes(o[queryType], querySearch)
         });
