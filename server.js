@@ -19,6 +19,7 @@ const CALENDAR_ID = "radiodiodi.fi_9hnpbn3u6ov84uv003kaghg4rc@group.calendar.goo
 const START_DATE = new Date(Date.parse("2017-04-12T00:00:00.000+03:00"));
 const END_DATE = new Date(Date.parse("2017-05-01T00:00:00.000+03:00"));
 const API_INTERVAL = 1000 * 60 * 60; // 1 hour
+const LIBRARY_INTERVAL = 1000 * 60 * 60; // 1 hour
 
 // App
 const app = express();
@@ -41,14 +42,35 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     }
     // Authorize a client with the loaded credentials, then call the
     // Google Calendar API.
-    function listEventsInterval() {
+    function listEventsPeriodic() {
         authorize(JSON.parse(content), listEvents);
     }
 
-    listEventsInterval();
-    setInterval(listEventsInterval, API_INTERVAL);
+    listEventsPeriodic();
+    setInterval(listEventsPeriodic, API_INTERVAL);
         
 });
+
+var musicLibrary = [];
+
+function readLibraryPeriodic() {
+    fs.readFile('library.json', function readLibraryFile(err, content) {
+        if (err) {
+            console.log('Error loading library json file: ' + err);
+            return;
+        }
+
+        try {
+            musicLibrary = JSON.parse(content);
+            console.log("Read library: " + musicLibrary.length + " items.");
+        } catch (err) {
+            console.log(err);
+        }
+    });
+}
+
+readLibraryPeriodic();
+setInterval(readLibraryPeriodic, LIBRARY_INTERVAL);
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -207,6 +229,24 @@ app.get('/shoutbox', function(req, res) {
 
 app.get('/calendar', function(req, res) {
     res.render('calendar');
+});
+
+app.get('/library', function(req, res) {
+    if (req.query.search && req.query.type) {
+        var queryType = req.query.type;
+        var querySearch = req.query.search;
+        var filtered = _.filter(musicLibrary, function (o) {
+                return _.includes(o[queryType], querySearch)
+        });
+
+        res.render('library', {
+            data: filtered
+        });
+    } else {
+        res.render('library', {
+            data: []
+        });
+    }
 });
 
 // Static directories

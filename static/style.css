@@ -326,3 +326,42 @@ a.black {
         display: none;
     }
 }
+
+.library-search {
+    text-align: center;
+}
+
+.library-table {
+    width: 100%
+}
+
+.library-th {
+    text-align: left;
+    padding: 15px;
+    background-color: #dfdfdf;
+}
+
+.library-td {
+    text-align: left;
+    padding: 15px;
+}
+
+.library-tr {
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #3d3d3d;
+}
+
+.library-search-input {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    border: 1px solid #3d3d3d;
+    height: 3em;
+}
+
