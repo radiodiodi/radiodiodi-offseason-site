@@ -264,6 +264,10 @@ app.get('/library', function(req, res) {
     }
 });
 
+app.get('/stream', function(req, res) {
+    res.render('stream');
+});
+
 // Static directories
 app.use('/static', express.static('static'));
 
