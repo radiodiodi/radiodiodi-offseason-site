@@ -44,22 +44,26 @@
         </div>
         <div class="library-main auto-content section-main">
             <table class="library-table auto-row">
-                <% if (data.length > 0) { %>
+                <% if (data != null) { %>
                     <h3><%= data.length %> hakutulos(ta).</h3>
+
+                    <% if (data.length > 0) { %>
                     <tr class="library-tr">
                         <th class="library-th">Kappale</th>
                         <th class="library-th">Artisti</th>
                         <th class="library-th">Albumi</th>
                     </tr>
+                    <% } %>
+                    
+                    <% data.forEach((item) => { %>
+                    <tr class="library-tr">
+                        <td class="library-td"><%= item.title %></td>
+                        <td class="library-td"><%= item.artist %></td>
+                        <td class="library-td"><%= item.album %></td>
+                    </tr>
+                    <% }) %>
                 <% } %>
 
-                <% data.forEach((item) => { %>
-                <tr class="library-tr">
-                    <td class="library-td"><%= item.title %></td>
-                    <td class="library-td"><%= item.artist %></td>
-                    <td class="library-td"><%= item.album %></td>
-                </tr>
-                <% }) %>
             </table>
         </div>
     </div>

@@ -259,7 +259,7 @@ app.get('/library', function(req, res) {
         });
     } else {
         res.render('library', {
-            data: []
+            data: null
         });
     }
 });
