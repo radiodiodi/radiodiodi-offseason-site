@@ -23,9 +23,11 @@ const LIBRARY_INTERVAL = 1000 * 60 * 60; // 1 hour
 
 // App
 const app = express();
-
 app.set('view engine', 'ejs');
-var calendar_data = [];
+
+function log(string) {
+    console.log(new Date + ": " + string);
+}
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/radiodiodi-calendar-credentials.json
@@ -34,10 +36,11 @@ var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
         process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'radiodiodi-calendar-credentials.json';
 
+var calendar_data = [];
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     if (err) {
-        console.log('Error loading client secret file: ' + err);
+        log('Error loading client secret file: ' + err);
         return;
     }
     // Authorize a client with the loaded credentials, then call the
@@ -56,15 +59,15 @@ var musicLibrary = [];
 function readLibraryPeriodic() {
     fs.readFile('library.json', function readLibraryFile(err, content) {
         if (err) {
-            console.log('Error loading library json file: ' + err);
+            log('Error loading library json file: ' + err);
             return;
         }
 
         try {
             musicLibrary = JSON.parse(content);
-            console.log("Read library: " + musicLibrary.length + " items.");
+            log("Read library: " + musicLibrary.length + " items.");
         } catch (err) {
-            console.log(err);
+            log(err);
         }
     });
 }
@@ -162,14 +165,14 @@ function listEvents(auth) {
         orderBy: 'startTime'
     }, function(err, response) {
         if (err) {
-            console.log('The API returned an error: ' + err);
+            log('The API returned an error: ' + err);
             return;
         }
         var events = response.items;
         if (events.length == 0) {
-            console.log('No upcoming events found.');
+            log('No upcoming events found.');
         } else {
-            console.log('Received ' + events.length + ' events.');
+            log('Received ' + events.length + ' events.');
             var new_calendar = [];
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
@@ -266,4 +269,4 @@ app.use('/static', express.static('static'));
 
 // Listen on port 8088
 app.listen(PORT, "0.0.0.0");
-console.log('Running on ' + ROOT_PATH);
+log('Running on ' + ROOT_PATH);
