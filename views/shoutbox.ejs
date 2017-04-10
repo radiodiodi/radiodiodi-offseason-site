@@ -58,8 +58,8 @@
             </div>
             <script>
               var prefix = 'https://';
-              var api_url = prefix + window.location.host + '/api/messages';
-              var url = 'wss://' + window.location.host + '/ws',
+              var api_url = prefix + window.location.host + ':5000/api/messages';
+              var url = 'wss://' + window.location.host + ':5000/ws',
                   sock,
                   box = document.getElementById('box'),
                   text = document.getElementById('text'),
