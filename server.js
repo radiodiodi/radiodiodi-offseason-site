@@ -9,12 +9,16 @@ const google = require('googleapis');
 const googleAuth = require('google-auth-library');
 const readline = require('readline');
 const http = require('http');
+const mongodb = require('mongodb');
+const MongoClient = require('mongodb').MongoClient
+var db
 
 // Constants
 const PORT = 8088;
 const HOST = "0.0.0.0";
 const ROOT_PATH = "http://" + HOST + ":" + PORT;
-const CALENDAR_ID = "radiodiodi.fi_9hnpbn3u6ov84uv003kaghg4rc@group.calendar.google.com"
+const CALENDAR_ID = "radiodiodi.fi_9hnpbn3u6ov84uv003kaghg4rc@group.calendar.google.com";
+const MONGODB_URL = "mongodb://localhost:27017/radiodiodi_listener_stats";
 
 // Calendar constants
 const START_DATE = new Date(Date.parse("2017-04-12T00:00:00.000+03:00"));
@@ -30,6 +34,7 @@ app.set('view engine', 'ejs');
 function log(string) {
     console.log(new Date + ": " + string);
 }
+
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/radiodiodi-calendar-credentials.json
@@ -77,7 +82,6 @@ function readLibraryPeriodic() {
 readLibraryPeriodic();
 setInterval(readLibraryPeriodic, LIBRARY_INTERVAL);
 
-var icecastStats = {};
 function readIcecastStatsPeriodic() {
     var opts = {
         host: 'virta.radiodiodi.fi',
@@ -91,15 +95,24 @@ function readIcecastStatsPeriodic() {
             str += chunk;
         });
 
+        response.on('error', function (err) {
+            log(err);
+        });
+
         function addStats(source) {
             var name = source.listenurl;
-            if (!(name in icecastStats)) {
-                icecastStats[name] = [];
+
+            var value = {
+                'listeners': source.listeners,
+                'time': new Date,
+                'name': name
             }
 
-            icecastStats[name].push({
-                'listeners': source.listeners,
-                'time': (new Date).toISOString()
+            db.collection('listeners').save(value, (err, result) => {
+                if (err) {
+                    log(err);
+                    return;
+                }
             });
         }
 
@@ -108,18 +121,22 @@ function readIcecastStatsPeriodic() {
             var fixed = str.replace(/1\./g, '1');
 
             var obj = JSON.parse(fixed);
-            console.log(obj);
             var source = obj.icestats.source;
             if (source.constructor === Array) {
                 source.forEach((s) => addStats(s));
             } else {
                 addStats(source);
             }
+
         });
     }
 
-    var req = http.request(opts, callback);
-    req.end();
+    try {
+        var req = http.request(opts, callback);
+        req.end();
+    } catch (err) {
+        log(err);
+    }
 }
 
 readIcecastStatsPeriodic();
@@ -322,24 +339,43 @@ app.get('/stats', function(req, res) {
     const N = 60; // one hour
 
     var arr = [];
-    Object.keys(icecastStats).forEach((is) => {
-        console.log('key: ' + is);
-        var stats = _.takeRight(icecastStats[is], N);
-        var obj = {
-            'x': stats.map((s) => s.time),
-            'y': stats.map((s) => s.listeners),
-            'type': 'scatter',
-            'name': is
+    var options = {
+        'limit': N,
+        'sort': 'time'
+    };
+
+    db.collection('listeners').find({}, options).limit(N).toArray(function(err, results) {
+        if (err) {
+            log(err);
+            return;
         }
-        arr.push(obj);
+        
+        var mountpoints = _.groupBy(results, (r) => r.name);
+
+        Object.keys(mountpoints).forEach((m) => {
+            var obj = {
+                'x': mountpoints[m].map((r) => r.time),
+                'y': mountpoints[m].map((r) => r.listeners),
+                'type': 'scatter',
+                'name': m
+            };
+            arr.push(obj);
+        });
+
+        res.render('stats', {'data': JSON.stringify(arr)}); 
     });
-    
-    res.render('stats', {'data': JSON.stringify(arr)}); 
 });
 
 // Static directories
 app.use('/static', express.static('static'));
 
-// Listen on port 8088
-app.listen(PORT, "0.0.0.0");
-log('Running on ' + ROOT_PATH);
+
+MongoClient.connect(MONGODB_URL, (err, database) => {
+    if (err)
+        return log(err)
+
+    db = database
+    // Listen on port 8088
+    app.listen(PORT, "0.0.0.0");
+    log('Running on ' + ROOT_PATH);
+});
