@@ -8,6 +8,7 @@ const _ = require('lodash');
 const google = require('googleapis');
 const googleAuth = require('google-auth-library');
 const readline = require('readline');
+const http = require('http');
 
 // Constants
 const PORT = 8088;
@@ -20,6 +21,7 @@ const START_DATE = new Date(Date.parse("2017-04-12T00:00:00.000+03:00"));
 const END_DATE = new Date(Date.parse("2017-05-01T00:00:00.000+03:00"));
 const API_INTERVAL = 1000 * 60 * 60; // 1 hour
 const LIBRARY_INTERVAL = 1000 * 60 * 60; // 1 hour
+const ICECAST_INTERVAL = 1000 * 60; // 1 minute
 
 // App
 const app = express();
@@ -74,6 +76,54 @@ function readLibraryPeriodic() {
 
 readLibraryPeriodic();
 setInterval(readLibraryPeriodic, LIBRARY_INTERVAL);
+
+var icecastStats = {};
+function readIcecastStatsPeriodic() {
+    var opts = {
+        host: 'virta.radiodiodi.fi',
+        path: '/status-json.xsl',
+        method: 'GET'
+    };
+
+    var callback = function(response) {
+        var str = ''
+        response.on('data', function (chunk) {
+            str += chunk;
+        });
+
+        function addStats(source) {
+            var name = source.listenurl;
+            if (!(name in icecastStats)) {
+                icecastStats[name] = [];
+            }
+
+            icecastStats[name].push({
+                'listeners': source.listeners,
+                'time': (new Date).toISOString()
+            });
+        }
+
+        response.on('end', function () {
+            // because icecast produces broken json
+            var fixed = str.replace(/1\./g, '1');
+
+            var obj = JSON.parse(fixed);
+            console.log(obj);
+            var source = obj.icestats.source;
+            if (source.constructor === Array) {
+                source.forEach((s) => addStats(s));
+            } else {
+                addStats(source);
+            }
+        });
+    }
+
+    var req = http.request(opts, callback);
+    req.end();
+}
+
+readIcecastStatsPeriodic();
+setInterval(readIcecastStatsPeriodic, ICECAST_INTERVAL);
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -266,6 +316,25 @@ app.get('/library', function(req, res) {
 
 app.get('/stream', function(req, res) {
     res.render('stream');
+});
+
+app.get('/stats', function(req, res) {
+    const N = 60; // one hour
+
+    var arr = [];
+    Object.keys(icecastStats).forEach((is) => {
+        console.log('key: ' + is);
+        var stats = _.takeRight(icecastStats[is], N);
+        var obj = {
+            'x': stats.map((s) => s.time),
+            'y': stats.map((s) => s.listeners),
+            'type': 'scatter',
+            'name': is
+        }
+        arr.push(obj);
+    });
+    
+    res.render('stats', {'data': JSON.stringify(arr)}); 
 });
 
 // Static directories
