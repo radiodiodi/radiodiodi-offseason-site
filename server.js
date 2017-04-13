@@ -336,20 +336,17 @@ app.get('/stream', function(req, res) {
 });
 
 app.get('/stats', function(req, res) {
-    const N = 60; // one hour
-
-    var arr = [];
     var options = {
-        'limit': N,
         'sort': [['time','desc']] 
     };
 
-    db.collection('listeners').find({}, options).limit(N).toArray(function(err, results) {
+    db.collection('listeners').find({}, options).toArray(function(err, results) {
         if (err) {
             log(err);
             return;
         }
         
+        var arr = [];
         var mountpoints = _.groupBy(results, (r) => r.name);
 
         Object.keys(mountpoints).forEach((m) => {
