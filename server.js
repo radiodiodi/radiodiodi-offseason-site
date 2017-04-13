@@ -354,6 +354,7 @@ app.get('/stats', function(req, res) {
                 'x': mountpoints[m].map((r) => r.time),
                 'y': mountpoints[m].map((r) => r.listeners),
                 'type': 'scatter',
+                'line': {'shape': 'spline'},
                 'name': m
             };
             arr.push(obj);
