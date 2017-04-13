@@ -341,7 +341,7 @@ app.get('/stats', function(req, res) {
     var arr = [];
     var options = {
         'limit': N,
-        'sort': 'time'
+        'sort': [['time','desc']] 
     };
 
     db.collection('listeners').find({}, options).limit(N).toArray(function(err, results) {
