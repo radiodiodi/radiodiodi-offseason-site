@@ -105,9 +105,15 @@ function readIcecastStatsPeriodic() {
         function addStats(source) {
             var name = source.listenurl;
 
+            // Manually fix timezone problem with plotly.js
+            // https://community.plot.ly/t/timezone-on-plotlyjs/26
+            const TZ_HOURS = 3;
+            var date = new Date;
+            date.setHours(date.getHours() + TZ_HOURS);
+
             var value = {
                 'listeners': source.listeners,
-                'time': new Date,
+                'time': date,
                 'name': name
             }
 
