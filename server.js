@@ -75,7 +75,7 @@ function readLibraryPeriodic() {
 
         try {
             musicLibrary = JSON.parse(content);
-            log("Read library: " + musicLibrary.length + " items.");
+            log('Read ' + musicLibrary.length + " tracks from music database.");
         } catch (err) {
             log(err);
         }
@@ -248,7 +248,7 @@ function listEvents(auth) {
         if (events.length == 0) {
             log('No upcoming events found.');
         } else {
-            log('Received ' + events.length + ' events.');
+            log('Received ' + events.length + ' events from Google Calendar.');
             var new_calendar = [];
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
@@ -381,6 +381,7 @@ MongoClient.connect(MONGODB_URL, (err, database) => {
     if (err)
         return log(err)
 
+    log('Connected to MongoDB at ' + MONGODB_URL);
     db = database
     // Listen on port 8088
     app.listen(PORT, "0.0.0.0");
