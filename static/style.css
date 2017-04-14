@@ -377,3 +377,33 @@ th, td {
 .checkbox-panel {
     margin: 5px;
 }
+
+.listen-row {
+    margin-top: 10px;
+    height: 32px;
+}
+
+.listen-row h3 {
+    margin: 0;
+    height: 32px;
+    line-height: 32px;
+}
+
+@media (min-width: 800px) {
+    #audio-div {
+        text-align: right;
+    }
+}
+
+@media (max-width: 800px) {
+    #audio-div {
+        text-align: center;
+    }
+    .listen-row h3 {
+        text-align: center;
+    }
+}
+
+.navigation-main a {
+    margin-top: 5px;
+}
