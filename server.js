@@ -35,6 +35,9 @@ function log(string) {
     console.log(new Date + ": " + string);
 }
 
+process.on('uncaughtException', function (err) {
+    log(err);
+}); 
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/radiodiodi-calendar-credentials.json
