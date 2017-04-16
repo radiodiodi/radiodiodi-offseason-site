@@ -1,6 +1,7 @@
 var prefix = 'https://';
-var api_url = prefix + window.location.host + ':5000/api/messages';
-var url = 'wss://' + window.location.host + ':5000/ws',
+var api_port = 5000;
+var api_url = prefix + window.location.hostname + ':' + api_port + '/api/messages';
+var url = 'wss://' + window.location.hostname + ':' + api_port + '/ws',
 sock,
     box = document.getElementById('box'),
     text = document.getElementById('text'),
