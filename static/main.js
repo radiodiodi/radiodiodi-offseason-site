@@ -70,3 +70,20 @@ try {
     document.getElementById('programme-next-day').onclick = chartForward;
     document.getElementById('programme-prev-day').onclick = chartBack;
 } catch (err) {}
+
+(function() {
+    function getNowPlaying() {
+        var container = document.getElementById('now-playing');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'api/now_playing');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var content = JSON.parse(xhr.responseText);
+                container.innerHTML = content.title;
+            }
+        };
+        xhr.send();
+    }
+    getNowPlaying();
+    setInterval(getNowPlaying, 60*1000);
+})();
