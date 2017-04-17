@@ -413,3 +413,7 @@ th, td {
     color: #3d3d3d;
     text-align: center;
 }
+
+#now-playing {
+    font-style: italic;
+}
