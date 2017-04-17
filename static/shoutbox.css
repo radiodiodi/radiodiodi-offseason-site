@@ -16,6 +16,7 @@
     box-sizing: border-box;
 }
 #input-box {
+    overflow: auto;
 }
 #input-box input {
     box-sizing: border-box;

@@ -408,3 +408,9 @@ th, td {
 .navigation-main a {
     margin-top: 5px;
 }
+
+#tg-link {
+    color: #3d3d3d;
+    margin-top: 10px;
+    text-align: center;
+}
