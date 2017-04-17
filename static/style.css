@@ -392,7 +392,7 @@ th, td {
 
 @media (min-width: 800px) {
     #audio-div {
-        text-align: right;
+        text-align: center;
     }
 }
 
@@ -407,4 +407,9 @@ th, td {
 
 .navigation-main a {
     margin-top: 5px;
+}
+
+#tg-link {
+    color: #3d3d3d;
+    text-align: center;
 }

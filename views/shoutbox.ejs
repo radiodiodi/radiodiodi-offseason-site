@@ -29,33 +29,7 @@
     </nav>
     <div class="main-container">
         <div class="auto-content section-main section-overview">
-
-        <!-- shoutbox code -->
-          <style>
-            .container {
-              text-align: center;
-              max-width: 500px;
-              margin: 0 auto;
-            }
-            #box {
-              text-align: left;
-              background-color: #fdfdfd;
-              border: 1px solid #ddd;
-              border-radius: 5px;
-              height: 300px;
-              padding: 25px;
-              overflow-y: scroll;
-              box-sizing: border-box;
-            }
-          </style>
-          <body>
-            <div class="container">
-              <h3>Huutislaatikko</h3>
-              <pre id="box"></pre>
-              <input placeholder="Name" id="name" type="text" />
-              <input placeholder="Message" id="text" type="text" />
-              <button id="send">Send</button>
-            </div>
+            <%- include shoutbox-partial.ejs %>
         </div>
     </div>
     <script src="https://radiodiodi.fi:5000/shoutbox.js">

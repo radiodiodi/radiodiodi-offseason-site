@@ -1,0 +1,29 @@
+.container {
+    text-align: center;
+    margin: 0 auto;
+}
+#box {
+    font-family: 'Droid Sans Mono', monospace;
+    font-size: 11px;
+    text-align: left;
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 300px;
+    padding: 25px;
+    width: 100%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+#input-box {
+    overflow: auto;
+}
+#input-box input {
+    box-sizing: border-box;
+    margin-top: 5px;
+    width: 100%;
+}
+#input-box button {
+    margin-top: 5px;
+    float: right;
+}
