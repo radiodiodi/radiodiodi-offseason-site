@@ -4,7 +4,7 @@
 }
 #box {
     font-family: 'Droid Sans Mono', monospace;
-    font-size: 11px;
+    font-size: 12px;
     text-align: left;
     background-color: #fdfdfd;
     border: 1px solid #ddd;
@@ -15,6 +15,7 @@
     overflow-y: scroll;
     box-sizing: border-box;
     word-wrap: break-word;
+    line-height: 1.5;
 }
 #input-box {
     overflow: auto;
