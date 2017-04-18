@@ -268,7 +268,9 @@ function listEvents(auth) {
 
 
 app.get('/api/now_playing', function (req, res) {
-    res.json(calendar_data[0]);
+    res.json(calendar_data.filter(d => {
+        return Date.parse(d['start']) < new Date
+    })[0];
 });
 
 app.get('/api/programmes', function (req, res) {
