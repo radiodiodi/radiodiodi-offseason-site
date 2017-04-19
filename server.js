@@ -296,7 +296,7 @@ app.get('/', (req, res) => {
             var grouped = _.groupBy(r, (x) => x.start.substr(8, 2));
             return res.render('index', {
                 programmes: {
-                    today: 18,
+                    today: (new Date).getDate(),
                     weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
                     all: grouped
                 }
