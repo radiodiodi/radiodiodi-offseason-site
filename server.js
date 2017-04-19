@@ -371,7 +371,10 @@ app.get('/stats', function(req, res) {
             arr.push(obj);
         });
 
-        res.render('stats', {'data': JSON.stringify(arr)}); 
+        res.render('stats', {
+            'data': JSON.stringify(arr),
+            'current': _.sumBy(arr, function(o) { return o['y'][o['y'].length - 1] })
+        }); 
     });
 });
 
