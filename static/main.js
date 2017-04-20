@@ -55,7 +55,7 @@ function updateChart(back) {
             addHtml += '<div class="chart-show">' +
                             '<small>' + p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5) + '</small>' +
                                 '<p>' + p.title + '</p>' +
-                                '<p>' + p.by + '</p>' +
+                                '<p class="chart-description">' + p.by + '</p>' +
                             '</div>';
         });
         document.getElementById('date-title').innerHTML = programChart.weekdays[(programChart.selectedDate - 3) % 7] + ' ' + programChart.selectedDate + '.4.2017';
