@@ -373,7 +373,7 @@ app.get('/stats', function(req, res) {
 
         res.render('stats', {
             'data': JSON.stringify(arr),
-            'current': _.sumBy(arr, function(o) { return o['y'][o['y'].length - 1] })
+            'current': _.sumBy(arr, function(o) { return o['y'][0] })
         }); 
     });
 });
