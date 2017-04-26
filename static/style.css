@@ -123,6 +123,10 @@ footer {
     width: auto;
 }
 
+#kieku-logo {
+    margin-top: -10px;
+}
+
 h5 {
   margin: 10px 0;
 }
