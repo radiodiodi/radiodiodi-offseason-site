@@ -346,6 +346,10 @@ app.get('/stream', function(req, res) {
     res.render('stream');
 });
 
+app.get('/virtuaalitodellisuus', function(req, res) {
+    res.redirect(301, 'http://lib.aalto.fi/fi/current/news/2017-03-20-002/');
+});
+
 app.get('/stats', function(req, res) {
     var options = {
         'sort': [['time','desc']] 
