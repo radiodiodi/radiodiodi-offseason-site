@@ -39,45 +39,13 @@
             <p>Radiota kuuntelee lähetyksen aikana koko pääkaupunkiseutu ja lasketulla kuuluvuusalueella asuu noin 400 000 ihmistä!</p>
                 </div>
                 <div id="audio-div" class="auto-col-6">
-                    <h3>Kuuntele Radiodiodia taajuudella<br><strong>105.0 MHz</strong> sekä verkossa!</h3>
-                    <audio controls>
-                        <source src="https://virta.radiodiodi.fi/stream.ogg" type="audio/ogg">
-                        <source src="https://virta.radiodiodi.fi/stream.mp3" type="audio/mp3">
-                    </audio>
-                    <p>Kuuntele myös <a style="color: #3d3d3d" href="static/stream.m3u">suosikkisoittimellasi!</a></p>
-                    <p>Nyt ohjelmassa: <span id="now-playing">ohjelmaa ei löytynyt</span></p>
-                    <%- include shoutbox-partial.ejs %>
-                    <h4 style="margin-top: 50px"><a id="tg-link" href="https://t.me/radiodiodichat">
+                    <h3>Lähetys on päättynyt. Kiitos kuuntelijoille!</h3>
+                    <h4 style="margin-top: 50px"><a id="tg-link" href="https://t.me/radiodiodioffseason">
                         Liity keskusteluun Telegramissa!
                     </a></h4>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="lightblue">
-        <div class="programme-chart auto-content section-main">
-            <h2 id="programmes" class="section-title">Ohjelmakartta</h2>
-            <div class="programme-tomorrow auto-col-12" style="padding-bottom: 0">
-                <div id="chart-selector">
-                    <h3 id="date-title"><%= programmes.weekdays[(programmes.today - 3) % 7] %> <%= programmes.today %>.4.2017</h3>
-                    <button id="programme-prev-day"><</button>
-                    <button id="programme-next-day">></button>
-                </div>
-                <div id="next-day">
-                    <% (programmes.all['' + programmes.today] || []).forEach((show) => { %>
-                        <div class="chart-show">
-                            <small><%= show.start.substr(11, 5) + ' - ' + show.end.substr(11, 5) %></small>
-                            <p><%= show.title %></p>
-                            <p class="chart-description"><%= show.by %></p>
-                        </div>
-                        <% }) %>
-                    </div>
-                </div>
-                <div style="text-align: center">
-                    Katso koko kalenteri <a href="/calendar">täältä!</a><br>
-                    Ohjelmakartta päivittyy automaattisesti tunnin välein.
-                </div>
-            </div>
     </section>
     <section class="white">
             <div id="team" class="auto-content section-main section-team">
