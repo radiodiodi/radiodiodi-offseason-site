@@ -47,84 +47,16 @@
             </div>
         </div>
     </section>
-    <section class="white">
-            <div id="team" class="auto-content section-main section-team">
-                <h2 class="section-title">Tiimi</h2>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/Panu.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">Puheenjohtaja</span>
-                    <h5 class="dude-name">Panu Oksiala</h5>
-                    <span class="dude-contact">panu@radiodiodi.fi</span>
-                </div>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/Onni.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">Päätoimittaja</span>
-                    <h5 class="dude-name">Onni Lampi</h5>
-                    <span class="dude-contact">onni@radiodiodi.fi</span>
-                </div>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/Juuso.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">Sihteeri</span>
-                    <h5 class="dude-name">Juuso Mikkonen</h5>
-                    <span class="dude-contact">juuso@radiodiodi.fi</span>
-                </div>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/A-J.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">Studiopäällikkö</span>
-                    <h5 class="dude-name">Antti-Juho Nieminen</h5>
-                    <span class="dude-contact">a-j@radiodiodi.fi</span>
-                </div>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/eero.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">Lähetyspäällikkö</span>
-                    <h5 class="dude-name">Eero Silfverberg</h5>
-                    <span class="dude-contact">eero@radiodiodi.fi</span>
-                </div>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/Jan.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">IT-päällikkö</span>
-                    <h5 class="dude-name">Jan Tuomi</h5>
-                    <span class="dude-contact">jan@radiodiodi.fi</span>
-                </div>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/Mari.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">Graafikko</span>
-                    <h5 class="dude-name">Mari Porko</h5>
-                    <span class="dude-contact">mari@radiodiodi.fi</span>
-                </div>
-                <div class="dude auto-col-4">
-                    <div class="image-border">
-                        <img src="static/images/viljami.jpg" alt="" class="dude-image" width=150px>
-                    </div>
-                    <span class="dude-description">Vesinokkaeläin</span>
-                    <h5 class="dude-name">Viljami</h5>
-                </div>
+</div>
+<script>
+    var programChart = {
+        programme: <%- JSON.stringify(programmes.all) %>,
+        selectedDate: <%= programmes.today %>,
+        weekdays: <%- JSON.stringify(programmes.weekdays) %>
+    };
+</script>
 
-            </div>
-        </section>
-    </div>
-    <script>
-        var programChart = {
-            programme: <%- JSON.stringify(programmes.all) %>,
-            selectedDate: <%= programmes.today %>,
-            weekdays: <%- JSON.stringify(programmes.weekdays) %>
-        };
-    </script>
-    <%- include footer.ejs %>
+<%- include footer.ejs %>
 
 </body>
 </html>
